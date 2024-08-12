@@ -1,0 +1,22 @@
+{
+  "vistasPagina": [
+    { "fecha": "2024-08-01", "vistas": 300 },
+    { "fecha": "2024-08-02", "vistas": 450 }
+  ],
+  "sesiones": [
+    { "fecha": "2024-08-01", "sesiones": 200, "tasaRebote": 0.35 },
+    { "fecha": "2024-08-02", "sesiones": 300, "tasaRebote": 0.40 }
+  ]
+  ,
+  "demografía": {
+    "edad": [
+      { "rango": "18-24", "porcentaje": 25 },
+      { "rango": "25-34", "porcentaje": 40 }
+    ],
+    "género": [
+      { "tipo": "hombre", "porcentaje": 55 },
+      { "tipo": "mujer", "porcentaje": 45 }
+    ]
+  }
+}
+ 
