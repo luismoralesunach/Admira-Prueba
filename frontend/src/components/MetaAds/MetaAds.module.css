@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px; /* Space between elements */
+}
+
+
+.selectLabel {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+.componentSelect{
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%; 
+    max-width: 300px; 
+    box-sizing: border-box;
+}
+.selectContainer {
+    margin-bottom: 20px; /* Space between select and chart */
+}
+
+.chartContainer {
+    display: flex;
+    flex-wrap: wrap; /* Allow charts to wrap on smaller screens */
+    gap: 20px; /* Add space between charts */
+}
+
+.chartContainer > * {
+    flex: 1 1 100%; /* Make each chart take full width on small screens */
+    max-width: 600px; /* Optional: Set a max width for charts */
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+    .chartContainer > * {
+        flex: 1 1 calc(50% - 20px); /* Two charts per row on larger screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .chartContainer > * {
+        flex: 1 1 calc(33.333% - 20px); /* Three charts per row on very large screens */
+    }
+}

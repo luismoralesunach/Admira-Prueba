@@ -1,0 +1,47 @@
+/* GoogleAnalytics.css */
+
+.container {
+    max-width: 1200px; /* Set a max width for larger screens */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.select-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.component-select {
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%; /* Make the select element full width */
+    max-width: 300px; /* Optional: Set a max width */
+    box-sizing: border-box;
+}
+
+.chart-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow charts to wrap on smaller screens */
+    gap: 20px; /* Add space between charts */
+}
+
+.chart-container > * {
+    flex: 1 1 100%; /* Make each chart take full width on small screens */
+    max-width: 600px; /* Optional: Set a max width for charts */
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+    .chart-container > * {
+        flex: 1 1 calc(50% - 20px); /* Two charts per row on larger screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .chart-container > * {
+        flex: 1 1 calc(33.333% - 20px); /* Three charts per row on very large screens */
+    }
+}
