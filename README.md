@@ -7,6 +7,9 @@
 - Correr `npm run dev`.
   *No hay variables de entorno.
 
+  Linke para el deploy:
+  https://admiraprueba.netlify.app/
+
 Al iniciar el servidor, hacer click en el botón "Go to dashboard".
 
 ![Screenshot of the Application](./frontend/screenshots/admiragahome.png)
