@@ -35,7 +35,7 @@ const AgeDemo = () => {
 
         fetchData();
     }, []);
-
+    
     useEffect(() => {
         let ageInput = Number(inputAge);
         if (ageInput >= 18 && ageInput <= 24) setAgeRange('18-24');
@@ -43,7 +43,6 @@ const AgeDemo = () => {
         else if (ageInput) setAgeRange('Desconocido');
         else setAgeRange('');
     }, [inputAge]);
-
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error}</div>;
 
