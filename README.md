@@ -8,7 +8,7 @@ Instrucciones para ver codigo en entorno local
   *No hay varaibles de entorno
 Al iniciar el servidor hacer click en boton "Go to dashboard"
 
-![Screenshot of the Application](./screenshots/screenshot.png)
+![Screenshot of the Application](./screenshots/admiragahome.png)
 
 
 
