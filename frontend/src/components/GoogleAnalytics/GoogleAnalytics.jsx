@@ -1,95 +1,61 @@
-import { useState, useEffect } from "react"
-import axios from 'axios'
-import {Line} from 'react-chartjs-2'
-import { lineChartData } from "../../assets/fakedata";
-import { 
-    Chart as ChartJS, 
-    CategoryScale, 
-    LinearScale, 
-    PointElement, 
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
- } from 'chart.js';
+import { useState } from "react";
+import GenderDemo from "./GenderDemo/GenderDemo";
+import AgeDemo from "./AgeDemo/AgeDemo";
+import ViewsSess from "./ViewsSess/ViewsSess";
+import SessBounce from "./SessionsBounce/SessionsBounce";
+import BounceRate from "./BounceRate/BounceRate";
+import './GoogleAnalytics.css'; // Import your CSS file
 
- ChartJS.register(
-    CategoryScale, 
-    LinearScale, 
-    PointElement, 
-    LineElement,
-    Title,
-    Tooltip,
-  )
+const GoogleAnalytics = () => {
+    const [selectedComponent, setSelectedComponent] = useState("all");
 
-const GoogleAnalytics = ()=>{
-
-    const [jsonData, setJsonData] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-
-
-    useEffect(()=>{
-       const fetchData = async()=>{
-        try {
-            const {data} = await axios.get(`/json/googleanalytics.json`)
-            if(data) setJsonData(data)
-                setLoading(false)
-            
-        } catch (error) {
-            setError(error.message)
-            console.log("Error in fetching in google analytics: ", error)
+    const renderComponent = () => {
+        switch (selectedComponent) {
+            case "viewsSess":
+                return <ViewsSess />;
+            case "sessBounce":
+                return <SessBounce />;
+            case "bounceRate":
+                return <BounceRate />;
+            case "ageDemo":
+                return <AgeDemo />;
+            case "genderDemo":
+                return <GenderDemo />;
+            default:
+                return (
+                    <>
+                        <ViewsSess />
+                        <SessBounce />
+                        <BounceRate />
+                        <AgeDemo />
+                        <GenderDemo />
+                    </>
+                );
         }
-       }
-
-       fetchData()
-    },[loading])
-
-    if(loading) return <div>Loading...</div>
-
-
-    console.log("Data in google analytics: ", jsonData)
-
-    let options = {}
-
-    
-    const fechas = jsonData.vistasPagina.map(item => item.fecha);
-
-    // Create datasets for vistasPagina and sesiones
-    const graphData = {
-      labels: fechas,
-      datasets: [
-        {
-          label: 'Vistas de Página',
-          data: jsonData.vistasPagina.map(item => item.vistas),
-          borderColor: 'rgba(75, 192, 192, 1)', // Teal color for page views
-          backgroundColor: 'rgba(75, 192, 192, 0.2)', // Light teal for page views
-          borderWidth: 1,
-          pointRadius: 5
-        },
-        {
-          label: 'Sesiones',
-          data: jsonData.sesiones.map(item => item.sesiones),
-          borderColor: 'rgba(255, 99, 132, 1)', // Red color for sessions
-          backgroundColor: 'rgba(255, 99, 132, 0.2)', // Light red for sessions
-          borderWidth: 1,
-          pointRadius: 5
-        }
-      ]
     };
-    return(
-        <div>
-            <div>
-            Visitas diarias
-            <Line options={options} data={graphData} />
-            </div>
 
-            <div>
-                Sesiones diarias
-                <Line options={options} data={lineChartData} />
+    return (
+        <div className="container">
+            <label htmlFor="componentSelect" className="select-label">Gráfica - Ver:</label>
+            <select
+                id="componentSelect"
+                className="component-select"
+                value={selectedComponent}
+                onChange={(e) => setSelectedComponent(e.target.value)}
+            >
+                <option value="all">Todas</option>
+                <option value="viewsSess">Vistas con Sesiones</option>
+                <option value="sessBounce">Sesiones con tasa de Rebote</option>
+                <option value="bounceRate">Tasa de Rebote</option>
+                <option value="ageDemo">Demografía - Edad</option>
+                <option value="genderDemo">Demografía - Género</option>
+            </select>
+
+            <div className="chart-container">
+                {renderComponent()}
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default GoogleAnalytics;

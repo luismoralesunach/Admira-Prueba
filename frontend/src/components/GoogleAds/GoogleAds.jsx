@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
+import styles from './GoogleAds.module.css'
 import axios from 'axios'
-import { lineChartData } from "../../assets/fakedata";
 import {Bar} from 'react-chartjs-2'
 import { 
     Chart as ChartJS, 
@@ -28,6 +28,7 @@ const GoogleAds = ()=>{
     // const [options, setOptions ] = useState({})
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [ selectedChart, setSelectedChart] = useState('graphData')
 
 
     useEffect(()=>{
@@ -62,6 +63,60 @@ const GoogleAds = ()=>{
         borderWidth: 1
       }))
     };
+
+    const justImpressions = {
+      labels: jsonData.campañas.map(camp => camp.nombre),
+      datasets: [
+        {
+          label: "Impresiones",
+          data: jsonData.campañas.map(camp => camp.impresiones),
+          borderColor: ['rgba(255, 99, 132, 1)' , 'rgba(54, 162, 235, 1)'], // Red for the first, Blue for the second
+          backgroundColor: ['rgba(255, 99, 132, 0.2)' , 'rgba(54, 162, 235, 0.2)'], // Red for the first, Blue for the second
+          borderWidth: 1
+
+        }
+      ]
+    }
+
+    const justClicks = {
+      labels: jsonData.campañas.map(camp => camp.nombre),
+      datasets: [
+        {
+          label: "Clics",
+          data: jsonData.campañas.map(camp => camp.clics),
+          borderColor: ['rgba(255, 99, 132, 1)' , 'rgba(54, 162, 235, 1)'], // Red for the first, Blue for the second
+          backgroundColor: ['rgba(255, 99, 132, 0.2)' , 'rgba(54, 162, 235, 0.2)'], // Red for the first, Blue for the second
+          borderWidth: 1
+
+        }
+      ]
+    }
+
+    const justConversions = {
+      labels: jsonData.campañas.map(camp => camp.nombre),
+      datasets: [
+        {
+          label: "Conversiones",
+          data: jsonData.campañas.map(camp => camp.conversiones),
+          borderColor: ['rgba(255, 99, 132, 1)' , 'rgba(54, 162, 235, 1)'], // Red for the first, Blue for the second
+          backgroundColor: ['rgba(255, 99, 132, 0.2)' , 'rgba(54, 162, 235, 0.2)'], // Red for the first, Blue for the second
+          borderWidth: 1
+        }
+      ]
+    }
+
+    const justCost = {
+      labels: jsonData.campañas.map(camp => camp. nombre),
+      datasets: [
+        {
+          label: "Costo",
+          data: jsonData.campañas.map(camp => camp.costo),
+          borderColor: ['rgba(255, 99, 132, 1)' , 'rgba(54, 162, 235, 1)'], // Red for the first, Blue for the second
+          backgroundColor: ['rgba(255, 99, 132, 0.2)' , 'rgba(54, 162, 235, 0.2)'], // Red for the first, Blue for the second
+          borderWidth: 1
+        }
+      ]
+    }
     
     console.log(graphData);
 
@@ -69,9 +124,31 @@ const GoogleAds = ()=>{
 
     const options = {}
 
+    const charts = {
+      graphData,
+      justImpressions,
+      justClicks,
+      justConversions,
+      justCost
+    }
+
     return(
-        <div>
-            <Bar options={options} data={graphData} />
+        <div className={styles.mainContainerAds}>
+          <div> 
+              Ver:
+            
+            <select
+            value={selectedChart}
+            onChange={(e)=>setSelectedChart(e.target.value)}
+            >
+              <option value="graphData">Todo</option>
+              <option value="justImpressions">Impresiones</option>
+              <option value="justClicks">Clics</option>
+              <option value="justConversions">Conversiones</option>
+              <option value="justCost">Costo</option>
+            </select>
+          </div>
+            <Bar data={charts[selectedChart]} options={options} /> 
         </div>
     )
 }

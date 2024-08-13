@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom"
-import styles from './Sidebar.module.css'
+import { Link } from "react-router-dom";
+import styles from './Sidebar.module.css';
 
-
-const Sidebar = ()=>{
-
+const Sidebar = () => {
     return(
         <div className={styles.sidebar}>
             <ul>
@@ -15,7 +13,6 @@ const Sidebar = ()=>{
             </ul>
         </div>
     )
-}
+};
 
-
-export default Sidebar
+export default Sidebar;

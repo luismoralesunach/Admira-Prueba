@@ -1,10 +1,22 @@
-/* App.css */
+/* Dashboard.module.css */
 .appContainer {
     display: flex;
+    flex-direction: row;
 }
 
 .mainContent {
-    margin-left: 250px; /* Match the width of the sidebar */
+    margin-left: 220px; /* Match the width of the sidebar */
     padding: 20px;
-   
+    flex: 1; /* Allow main content to fill the available space */
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .appContainer {
+        flex-direction: column;
+    }
+
+    .mainContent {
+        margin-left: 0;
+    }
 }

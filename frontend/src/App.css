@@ -1,0 +1,53 @@
+/* Base styles for form elements */
+select, input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea {
+    font-family: 'Arial', sans-serif; /* Use a clean font */
+    font-size: 16px; /* Ensure readability */
+    padding: 10px; /* Add padding for better touch targets */
+    border: 1px solid #ccc; /* Light border for a clean look */
+    border-radius: 4px; /* Rounded corners for a modern look */
+    background-color: #fff; /* White background for input fields */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+    width: 100%; /* Ensure inputs and selects take full width */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Styles for selects */
+select {
+    -webkit-appearance: none; /* Remove default styling on WebKit browsers */
+    -moz-appearance: none; /* Remove default styling on Firefox */
+    appearance: none; /* Remove default styling on other browsers */
+    background: #f4f4f4 url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath d="M5.8 6.2L8 9l2.2-2.8" fill="none" stroke="%23999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E') no-repeat right 10px center; /* Custom dropdown arrow */
+    background-size: 16px; /* Adjust size of custom arrow */
+}
+
+/* Styles for input and textarea elements */
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], textarea {
+    height: 40px; /* Consistent height for text inputs */
+    line-height: 20px; /* Align text vertically */
+}
+
+/* Styles for textarea */
+textarea {
+    min-height: 100px; /* Make textareas a bit larger by default */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Hover and focus states */
+select:hover, input:hover, textarea:hover,
+select:focus, input:focus, textarea:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Add subtle shadow on focus */
+}
+
+/* Disabled state */
+select:disabled, input:disabled, textarea:disabled {
+    background-color: #e9ecef; /* Light grey background for disabled fields */
+    border-color: #ced4da; /* Grey border for disabled fields */
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+}
+
+/* Placeholder styles */
+::placeholder {
+    color: #6c757d; /* Placeholder text color */
+    opacity: 1; /* Ensure placeholder text is visible */
+}
