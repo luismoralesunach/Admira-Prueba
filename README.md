@@ -40,4 +40,4 @@ Para el manejo de estados, cada llamada a la API se envolvía en un `try-catch` 
 ## Conclusión
 La verdad fue bastante interesante trabajar en este proyecto utilizando la librería de ChartJS, algo que nunca había hecho antes, y siento que ahora estoy mucho más cómodo ordenando la información para que se renderice como quiera en las gráficas. Lo más difícil hasta ahora fue pensar en cómo organizar el proyecto; al final decidí crear un archivo para cada gráfica en los JSON donde se usarían varias gráficas porque sería más fácil tanto para el usuario como para el desarrollador (yo) al momento de decidir qué hacer o qué información ver.
 
-Espero que les guste el proyecto y agradecería mucho cualquier feedback que puedan tener. Estoy emocionado por la oportunidad y espero poder escuchar noticias positivas pronto.
+Espero que les guste el proyecto y agradecería mucho cualquier feedback que puedan tener. Estoy emocionado por la oportunidad y espero poder escuchar noticias positivas pronto.🙏
