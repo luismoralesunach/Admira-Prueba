@@ -31,9 +31,9 @@ const GoogleAnalytics = () => {
                         <GenderDemo />
                     </>
                 );
-        }
+        } 
     };
-
+ 
     return (
         <div className="container">
             <label htmlFor="componentSelect" className="select-label">Gráfica - Ver:</label>
